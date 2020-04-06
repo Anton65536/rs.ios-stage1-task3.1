@@ -3,10 +3,7 @@
 @interface ViewController () <UITextFieldDelegate>
 
 @end
-@implementation ViewController 
-
-
-
+@implementation ViewController
     
 static CGPoint const origin = {20, 100};
 static CGSize const defaultLabelSize = {100 , 50};
@@ -20,7 +17,13 @@ NSString* empty = @"";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setupUserInterface];
+    [self setupAccessibility];
+    
+}
+
+- (void) setupAccessibility{
     self.view.accessibilityIdentifier = @"mainView";
     self.textFieldRed.accessibilityIdentifier = @"textFieldRed";
     self.textFieldGreen.accessibilityIdentifier = @"textFieldGreen";
@@ -135,7 +138,6 @@ NSString* empty = @"";
         double g = [self.textFieldGreen.text floatValue];
         double b = [self.textFieldBlue.text floatValue];
         self.viewResultColor.backgroundColor = [UIColor colorWithRed: r/255 green:g/255 blue: b/255 alpha: 1.0];
-        NSLog(@"color %@", self.viewResultColor.backgroundColor);
         self.labelResultColor.text = [self hexStringForColor:self.viewResultColor.backgroundColor];
     }
     self.textFieldRed.text = empty;
